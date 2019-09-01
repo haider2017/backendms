@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker container rm -f backendms'
+                sh 'docker stop backendms || true && docker rm backendms || true'
                 sh 'docker container run -d -p 8001:8080 --name backendms backendms1'
             }
         }
