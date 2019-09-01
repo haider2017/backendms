@@ -8,10 +8,11 @@ pipeline {
         stage('Build') {
             steps {
                sh 'git pull https://github.com/haider2017/backendms.git'
-               sh 'git checkout -b build1 master'
+               sh 'git checkout -b build1'
                sh 'echo moved to branch build1'
                sh 'npm install'
                sh 'vi merge-tw.txt'
+               sh 'git add .'
                sh 'git commit -m ​ "merge-tw file created"'
                sh 'docker build -t backendms1 .'
             }
