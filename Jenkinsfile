@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    // environment {
-    //     registryCredential = 'dockerhub'
-    // }
 
     stages {
         stage('Build') {
@@ -17,30 +14,20 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker stop backendms || true && docker rm backendms || true'
+                sh 'docker stop backendms || true && docker rm backendms || true'//if container is running then stop it or else resume rest of the steps
                 sh 'docker container run -d -p 8001:8080 --name backendms backendms1'
             }
         }
 
         stage('Publish'){
             steps {
-                sh 'vi merge-tw.txt'
-                sh 'git add merge-tw'
+                sh "echo version := 1.0.${env.BUILD_ID} >> version.txt"
+                sh 'git add -a'
                 sh 'git commit -m ​ "merge-tw file created"' 
                 sh 'git checkout master'
                 sh 'git merge build1'
                 sh 'git branch -d build1'
             }
         }
-    //     stage('Publish') {
-    //         steps{
-    //             script {
-    //                 docker.withRegistry( '', registryCredential ) {
-    //                     sh 'docker push umermunirrr/test-node-app:latest'
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
     }
 }
