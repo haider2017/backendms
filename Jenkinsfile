@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh "echo version := 1.0.${env.BUILD_ID} >> version.txt"
                 sh 'git add -A'
-                sh 'git commit -m ​ "merge-tw file created"' 
+                sh 'git commit -m ​ `merge-tw file created`' 
                 sh 'git checkout master'
                 sh 'git merge build1'
                 sh 'git branch -d build1'
