@@ -11,9 +11,6 @@ pipeline {
                sh 'git checkout -b build1'
                sh 'echo moved to branch build1'
                sh 'npm install'
-               sh 'vi merge-tw.txt'
-               sh 'git add .'
-               sh 'git commit -m ​ "merge-tw file created"'
                sh 'docker build -t backendms1 .'
             }
         }
@@ -26,9 +23,12 @@ pipeline {
 
         stage('Publish'){
             steps {
-               sh 'git checkout master'
-               sh 'git merge build1'
-               sh 'git branch -d build1'
+                sh 'vi merge-tw.txt'
+                sh 'git add merge-tw'
+                sh 'git commit -m ​ "merge-tw file created"' 
+                sh 'git checkout master'
+                sh 'git merge build1'
+                sh 'git branch -d build1'
             }
         }
     //     stage('Publish') {
