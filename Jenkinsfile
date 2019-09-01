@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                sh 'git pull https://github.com/haider2017/backendms.git'
-               sh 'git branch -d build1'
+               sh 'git branch -d build1 || true'
                sh 'git checkout -b build1'
                sh 'echo moved to branch build1'
                sh 'npm install'
