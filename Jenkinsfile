@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
-               sh 'git pull https://github.com/haider2017/backendms.git'
+               sh 'git pull https://github.com/haider2017/backendms.git dev'
                sh 'echo **** Installing NPM Dependencies ****'
                sh 'npm install'
                echo '**** Running Node Application ****'
