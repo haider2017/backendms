@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo '**** Building Container Image ****'
                 sh 'docker build -t backendms .'
-                sh 'docker tag backendms dice_backendms'
+                sh 'docker tag backendms devopslab3img1/backendms'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
             steps{
                 script {
                     docker.withRegistry( '', registryCredential ) {
-                        sh 'docker push dice_backendms'
+                        sh 'docker push devopslab3img1/backendms:latest'
                     }
                 }
             }
