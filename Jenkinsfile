@@ -23,6 +23,7 @@ pipeline {
             steps {
                 echo '**** Building Container Image ****'
                 sh 'docker build -t backendms .'
+                sh 'docker tag backendms dice_backendms'
             }
         }
 
@@ -31,7 +32,7 @@ pipeline {
                 script {
                     sh 'docker login --username=devopsday3lab1 --email=m.haidersarfraz@gmail.com'
                     docker.withRegistry( '', registryCredential ) {
-                        sh 'docker push backendms'
+                        sh 'docker push dice_backendms'
                     }
                 }
             }
