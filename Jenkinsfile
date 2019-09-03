@@ -29,8 +29,8 @@ pipeline {
         stage('Push to DockerHub'){
             steps{
                 script {
-                    docker.withRegistry( '', registryCredential ) {
-                        sh 'docker push backendms:latest'
+                    docker.withRegistry( '', [credentialsId: registryCredential] ) {
+                        sh 'docker push backendms'
                     }
                 }
             }
