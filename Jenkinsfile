@@ -30,7 +30,6 @@ pipeline {
         stage('Push to DockerHub'){
             steps{
                 script {
-                    sh 'docker login --username=devopsday3lab1 --email=m.haidersarfraz@gmail.com'
                     docker.withRegistry( '', registryCredential ) {
                         sh 'docker push dice_backendms'
                     }
