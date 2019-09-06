@@ -1,0 +1,12 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app"
+  },
+  "dependencies": {
+    "seneca": "^3.13.3",
+    "seneca-amqp-transport": "^2.2.0"
+  }
+}
