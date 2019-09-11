@@ -36,5 +36,13 @@ pipeline {
                 }
             }
         }
+        stage('Update Deployment'){
+            steps{
+                dir('deployment')
+                {
+                    sh 'kubectl apply -f backend.yaml'
+                }
+            }
+        }
     }
 }

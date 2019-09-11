@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: clientservice
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        tier: clientservice
+        app: dice
+    spec:
+      containers:
+      - name: clientservice
+        image: devopslab3img1/backendms
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: clientservice
+spec:
+  type: ClusterIP
+  selector:
+    tier: clientservice
+    app: dice
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
