@@ -9,7 +9,7 @@ seneca.add('role:clientservice,cmd:salestax', function (msg, done) {
 .listen({
     type: 'amqp',
     pin : 'role:clientservice,cmd:salestax',
-    url : "rabbitmq:5672"
+    url : "rabbitmq:8081"
 });
 
 module.exports = seneca;
