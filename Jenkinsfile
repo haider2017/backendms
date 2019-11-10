@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo '**** Building Container Image ****'
                 sh 'docker build -t backendms .'
-                sh 'docker tag backendms devopslab3img1/backendms'
+                sh 'docker tag backendms devopslab3img1/gateway'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
             steps{
                 script {
                     docker.withRegistry( '', registryCredential ) {
-                        sh 'docker push devopslab3img1/backendms:latest'
+                        sh 'docker push devopslab3img1/gateway:latest'
                     }
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
             steps{
                 dir('deployment')
                 {
-                    sh 'kubectl apply -f backend.yaml'
+                    sh 'helm install application --name backend-app'
                 }
             }
         }
