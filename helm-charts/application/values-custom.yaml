@@ -1,0 +1,4 @@
+applicationName: microservice-application-haider
+
+backend:
+  replicas: 2

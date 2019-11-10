@@ -1,0 +1,16 @@
+applicationName: aurora
+application:
+  annotations:
+    lab: helm
+
+backend:
+  serviceName: server
+  additionalLabels:
+    tier: server
+  replicas: 1
+  podLabels:
+    tier: server
+  image: devopslab3img1/gateway
+  imagePullPolicy: IfNotPresent
+  containerPort: 8080
+  serviceType: ClusterIP 

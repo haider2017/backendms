@@ -1,12 +1,24 @@
 {
-  "name": "client",
+  "name": "server",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./app"
+    "start": "nodemon -e js,jade,html,json -L ./bin/www",
+    "server": "babel-node ./bin/www"
   },
   "dependencies": {
-    "seneca": "^3.13.3",
-    "seneca-amqp-transport": "^2.2.0"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
   }
 }
